@@ -18,6 +18,6 @@ public class signupController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         transition.fadeInTransition(root);
-        transition.swim(icon);
+        transition.swim(icon,10,10);
     }
 }

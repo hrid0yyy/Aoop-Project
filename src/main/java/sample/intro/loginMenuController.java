@@ -58,7 +58,7 @@ public class loginMenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         transition.fadeInTransition(rootPane);
-        transition.swim(icon);
+        transition.swim(icon,10,10);
         FadeTransition fade = new FadeTransition(Duration.millis(1000),text);
         fade.setFromValue(1.0);
         fade.setToValue(0.0);
@@ -74,7 +74,7 @@ public class loginMenuController implements Initializable {
 
                 Parent root = null;
                 try {
-                    root = FXMLLoader.load(getClass().getResource("signup.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("intro.fxml"));
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
