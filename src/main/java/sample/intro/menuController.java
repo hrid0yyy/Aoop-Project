@@ -14,6 +14,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -53,13 +55,19 @@ public class menuController implements Initializable {
 
     @FXML
     private ImageView java;
+    @FXML
+    private AnchorPane root;
+
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        transition.fadeInTransition(root);
         single_player_image.setStyle("-fx-opacity: 0.0;");
         multiplayer_image.setStyle("-fx-opacity: 0.0;");
         account_image.setStyle("-fx-opacity: 0.0;");
+        exit_image.setStyle("-fx-opacity: 0.0;");
+
         FadeTransition fade = new FadeTransition(Duration.millis(1000),python);
         fade.setFromValue(1.0);
         fade.setToValue(0.0);
@@ -87,7 +95,7 @@ public class menuController implements Initializable {
         fade4.setCycleCount(TranslateTransition.INDEFINITE);
         fade4.setAutoReverse(true);
         fade4.play();
-        exit_image.setStyle("-fx-opacity: 0.0;");
+
 
 
         single_player_label.setOnMouseEntered(new EventHandler<MouseEvent>() {

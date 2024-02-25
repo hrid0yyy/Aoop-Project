@@ -1,5 +1,6 @@
 package sample.intro;
 
+import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,8 +23,11 @@ public class splashIntroController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
         new SplashScreen().start();
     }
+
 
     class SplashScreen extends Thread
     {
@@ -35,9 +40,12 @@ public class splashIntroController implements Initializable {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
+
+
 
                     Parent rootlogin = null;
                             try {
@@ -51,9 +59,9 @@ public class splashIntroController implements Initializable {
                             Stage stage = new Stage();
                             stage.setScene(scene);
                             stage.initStyle(StageStyle.UNDECORATED);
-                            stage.show();
 
                             root.getScene().getWindow().hide();
+                            stage.show();
 
                 }
             });

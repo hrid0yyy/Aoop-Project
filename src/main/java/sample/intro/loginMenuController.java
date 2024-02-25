@@ -41,8 +41,7 @@ public class loginMenuController implements Initializable {
     @FXML
     private Text text = new Text();
 
-    @FXML
-    private ImageView showpassword;
+
 
 
     private Stage stage;
@@ -58,24 +57,8 @@ public class loginMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        TranslateTransition transition = new TranslateTransition();
-        transition.setNode(icon);
-        transition.setDuration(Duration.millis(1000));
-        transition.setCycleCount(TranslateTransition.INDEFINITE);
-        transition.setFromX(-10);
-        transition.setByX(10);
-        transition.setAutoReverse(true);
-        transition.play();
-        RotateTransition rotate = new RotateTransition();
-        rotate.setNode(icon);
-        rotate.setDuration(Duration.millis(500));
-        rotate.setCycleCount(TranslateTransition.INDEFINITE);
-        rotate.setInterpolator(Interpolator.LINEAR);
-        rotate.setFromAngle(10);
-        rotate.setByAngle(-10);
-        rotate.setAutoReverse(true);
-        rotate.setAxis(Rotate.Z_AXIS);
-        rotate.play();
+        transition.fadeInTransition(rootPane);
+        transition.swim(icon);
         FadeTransition fade = new FadeTransition(Duration.millis(1000),text);
         fade.setFromValue(1.0);
         fade.setToValue(0.0);
