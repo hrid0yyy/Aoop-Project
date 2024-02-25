@@ -18,14 +18,14 @@
             <Image url="@luffy.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="dialouge" fitHeight="292.0" fitWidth="377.0" layoutX="283.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="dialouge" fitHeight="312.0" fitWidth="390.0" layoutX="275.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@dialougeBox.png" />
          </image>
       </ImageView>
-      <Text fx:id="dialougetext" layoutX="381.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello my name is Monkey D Luffy !!!" textAlignment="CENTER" wrappingWidth="132.13671875">
+      <Text fx:id="dialougetext" layoutX="356.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello my name is Monkey D Luffy !!!  Welcome, adventurer, to the boundless world of Data Seas: Quest for Knowledge" textAlignment="CENTER" wrappingWidth="187.5703125">
          <font>
-            <Font name="Lucida Console" size="13.0" />
+            <Font name="Lucida Console" size="12.0" />
          </font>
       </Text>
    </children>

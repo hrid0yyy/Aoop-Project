@@ -8,7 +8,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -16,8 +19,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -98,6 +103,7 @@ public class menuController implements Initializable {
 
 
 
+
         single_player_label.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -162,12 +168,33 @@ public class menuController implements Initializable {
             }
         });
 
-
-
         exit_label.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 Platform.exit();
+            }
+        });
+
+
+        single_player_label.setOnMouseClicked(event -> {
+            try {
+                // Load the new FXML file
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("map.fxml"));
+                Parent root = loader.load();
+
+                // Get the stage from any UI element
+                Stage stage = (Stage) single_player_label.getScene().getWindow();
+
+                // Create a new scene
+                Scene scene = new Scene(root);
+
+                // Set the scene to the stage
+                stage.setScene(scene);
+
+                // Show the stage
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
 

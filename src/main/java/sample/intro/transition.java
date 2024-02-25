@@ -1,18 +1,23 @@
 package sample.intro;
 
-import javafx.animation.FadeTransition;
-import javafx.animation.Interpolator;
-import javafx.animation.RotateTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.IOException;
 
 public class transition {
     public static void fadeInTransition(Parent root) {
@@ -21,7 +26,7 @@ public class transition {
         fade.setToValue(1.0);
         fade.play();
     }
-    public static void showMessage(ImageView image2,int from,int to,ImageView image,Text text, String string)
+    public static void showMessage(ImageView image2, int from, int to, ImageView image, Text text, String string)
     {
         text.setText("");
 
@@ -92,4 +97,42 @@ public class transition {
         rotate.setAxis(Rotate.Z_AXIS);
         rotate.play();
     }
+
+    public static void handleShipClick(double scaleX,double scaleY, AnchorPane root, String fxmlFilePath) {
+
+        ScaleTransition scaleIn = new ScaleTransition(Duration.seconds(1), root);
+        scaleIn.setToX(scaleX);
+        scaleIn.setToY(scaleY);
+
+        scaleIn.setOnFinished(actionEvent -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(transition.class.getResource(fxmlFilePath));
+                Parent newRoot = loader.load();
+                Stage stage = (Stage) root.getScene().getWindow();
+                Scene scene = new Scene(newRoot);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        scaleIn.play();
+    }
+
+    public static void addHoverAnimation(ImageView imageView) {
+        imageView.setOnMouseEntered(event -> {
+            ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.2), imageView);
+            scaleTransition.setToX(1.3);
+            scaleTransition.setToY(1.3);
+            scaleTransition.play();
+        });
+
+        imageView.setOnMouseExited(event -> {
+            ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.2), imageView);
+            scaleTransition.setToX(1);
+            scaleTransition.setToY(1);
+            scaleTransition.play();
+        });
+    }
+
 }

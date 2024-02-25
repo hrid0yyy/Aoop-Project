@@ -20,7 +20,7 @@
          <children>
             <ImageView fitHeight="417.0" fitWidth="341.0" layoutX="-8.0" layoutY="-7.0">
                <image>
-                  <Image url="@coding.png" />
+                  <Image url="@Scene1.jpg" />
                </image>
             </ImageView>
          </children>
@@ -59,7 +59,7 @@
             </PasswordField>
             <Button alignment="CENTER" minWidth="52.0" mnemonicParsing="false" onAction="#login" prefHeight="23.0" prefWidth="54.0" text="Enter">
                <VBox.margin>
-                  <Insets left="110.0" />
+                  <Insets left="113.0" />
                </VBox.margin>
                <font>
                   <Font size="10.0" />
@@ -68,12 +68,12 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Text fx:id="text" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="New player?" underline="true">
+            <Text fx:id="text" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Take A Tour" textAlignment="CENTER" underline="true">
                <font>
-                  <Font name="Lucida Console" size="10.0" />
+                  <Font name="Lucida Console" size="12.0" />
                </font>
                <VBox.margin>
-                  <Insets left="105.0" top="10.0" />
+                  <Insets left="100.0" top="10.0" />
                </VBox.margin>
                <cursor>
                   <Cursor fx:constant="HAND" />

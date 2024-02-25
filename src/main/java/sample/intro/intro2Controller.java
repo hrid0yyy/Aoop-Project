@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -28,14 +29,14 @@ public class intro2Controller implements Initializable {
     private Scene scene;
     @FXML
     private AnchorPane rootPane;
-
     @FXML
     private Text dialougetext = new Text();
+
     int count = 0;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         dialougetext.setFocusTraversable(true);
-        transition.showMessage(luffy,300,300,dialouge,dialougetext,"Hello my name is Monkey D Luffy !!!");
+        transition.showMessage(luffy,300,300,dialouge,dialougetext,"Hello my name is Monkey D Luffy !!! Welcome, adventurer, to the boundless world of Data Seas: Quest for Knowledge");
 
         dialougetext.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
@@ -45,13 +46,18 @@ public class intro2Controller implements Initializable {
                     count++;
                     if(count == 1)
                     {
-                        transition.showMessage(luffy,300,300,dialouge,dialougetext,"Kaizoku oni naru");
+                        transition.showMessage(luffy,300,300,dialouge,dialougetext,"In this immersive journey, you will uncover the secrets of data structures and become a legendary coder");
                     }
                     if(count == 2)
                     {
+                        transition.showMessage(luffy,300,300,dialouge,dialougetext,"Are you ready to set sail and unravel the secrets of the Data Seas? Your adventure begins now");
+                    }
+
+                    if(count == 3)
+                    {
                         transition.showMessage(luffy,300,300,dialouge,dialougetext,"give me meat ASAP");
                     }
-                    if(count == 3)
+                    if(count == 4)
                     {
                         Parent root = null;
                         try {
