@@ -10,16 +10,21 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.io.IOException;
 
 public class transition {
+
+
     public static void fadeInTransition(Parent root) {
         FadeTransition fade = new FadeTransition(Duration.millis(1000),root);
         fade.setFromValue(0.7);
@@ -28,6 +33,10 @@ public class transition {
     }
     public static void showMessage(ImageView image2, int from, int to, ImageView image, Text text, String string)
     {
+        image.setOpacity(1);
+        image2.setOpacity(1);
+        text.setOpacity(1);
+
         text.setText("");
 
         TranslateTransition transition = new TranslateTransition();
@@ -44,12 +53,54 @@ public class transition {
         fade.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                text.setText(string+"\n\n\n"+"[Press X]");
+                text.setText(string+"\n\n\n"+"[Press X ]");
+
+
             }
         });
-
-
     }
+  public static void switchPage(Parent root,Scene scene,Stage stage,Parent rootPane)
+  {
+//      root = null;
+//      try {
+//          root= FXMLLoader.load(getClass().getResource(fxmlfile));
+//      } catch (IOException e) {
+//
+//          throw new RuntimeException(e);
+//      }
+
+      scene = new Scene(root);
+      stage = new Stage();
+      stage.setScene(scene);
+      stage.initStyle(StageStyle.UNDECORATED);
+
+      rootPane.getScene().getWindow().hide();
+      stage.show();
+  }
+
+    public static void showMessage1(ImageView girl, ImageView scroll, Text text, String message) {
+        text.setText("");
+
+        TranslateTransition scrollTransition = new TranslateTransition(Duration.seconds(1), scroll);
+        scrollTransition.setToX(0);
+        scrollTransition.play();
+
+        FadeTransition scrollFadeIn = new FadeTransition(Duration.seconds(1), scroll);
+        scrollFadeIn.setFromValue(0.0);
+        scrollFadeIn.setToValue(1.0);
+
+        FadeTransition textFadeIn = new FadeTransition(Duration.seconds(1), text);
+        textFadeIn.setFromValue(0.0);
+        textFadeIn.setToValue(1.0);
+
+        scrollFadeIn.setOnFinished(event -> textFadeIn.play());
+
+        scrollFadeIn.play();
+
+        textFadeIn.setOnFinished(event -> text.setText(message + "\n\n\n[Press X]"));
+        girl.setLayoutX(100);
+    }
+
     public static void fadeOutTransition(Parent root) {
         FadeTransition fade = new FadeTransition(Duration.millis(1000),root);
         fade.setFromValue(1.0);
