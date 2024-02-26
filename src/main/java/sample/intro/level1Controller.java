@@ -2,12 +2,14 @@ package sample.intro;
 
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -20,6 +22,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.Key;
 import java.util.ResourceBundle;
 
 public class level1Controller implements Initializable {
@@ -42,6 +45,16 @@ public class level1Controller implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    @FXML
+    private ImageView luffy;
+
+    @FXML
+    private ImageView luffy_box;
+    @FXML
+    private Text luffy_text;
+
+    @FXML
+    private TextField luffy_text_field;
 
 //    private TranslateTransition transitionScroll;
 //    private TranslateTransition transitionText;
@@ -49,6 +62,7 @@ public class level1Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         girl.setOpacity(0);
         scroll.setOpacity(0);
+        transition.helper_luffy_apperance(luffy,luffy_box,luffy_text,luffy_text_field,0);
 
         transition.addHoverAnimation(tip1);
         transition.addHoverAnimation(tip2);
@@ -172,6 +186,34 @@ public class level1Controller implements Initializable {
 //                }
 //            }
 //        });
+
+    }
+
+    @FXML
+    void help_luffy(ActionEvent event) {
+        transition.helper_luffy_apperance(luffy,luffy_box,luffy_text,luffy_text_field,1);
+        transition.showMessage(luffy,300,300,luffy_box,luffy_text,"Hey wassup");
+        luffy_text_field.setFocusTraversable(true);
+        luffy_text_field.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if(keyEvent.getCode() == KeyCode.ENTER)
+                {
+                    transition.helper_luffy(luffy_text_field,luffy_text);
+                    luffy_text_field.setOpacity(0);
+                    luffy_text_field.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                        @Override
+                        public void handle(KeyEvent keyEvent) {
+                            if(keyEvent.getCode() == KeyCode.X)
+                            {
+                                transition.helper_luffy_apperance(luffy,luffy_box,luffy_text,luffy_text_field,0);
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
 
     }
 //    private void showMessage(String message) {

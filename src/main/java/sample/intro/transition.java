@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -116,6 +117,22 @@ public class transition {
         fade.setAutoReverse(true);
         fade.play();
     }
+    public static void helper_luffy(TextField textField,Text text)
+    {
+        String qus = textField.getText();
+
+
+        text.setText(qus+"\n\nPress X to hide Luffy");
+
+    }
+    public static void helper_luffy_apperance(ImageView luffy, ImageView luffybox, Text text, TextField textField,double value)
+    {
+        luffy.setOpacity(value);
+        luffybox.setOpacity(value);
+        text.setOpacity(value);
+        textField.setOpacity(value);
+    }
+
     public  static void backNforward(Node icon, int from, int to)
     {
         TranslateTransition transition = new TranslateTransition();
